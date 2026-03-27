@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Md Raqibur Rahman</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+  --bg: #0f172a;
+  --card: rgba(255,255,255,0.05);
+  --text: #e5e7eb;
+  --accent: #3b82f6;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 8%;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 25px;
+}
+
+/* HERO */
+.hero {
+  padding: 80px 8%;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.hero img {
+  width: 200px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin: 0;
+}
+
+.hero p {
+  color: #9ca3af;
+  margin-top: 10px;
+}
+
+/* SECTION */
+.section {
+  padding: 60px 8%;
+}
+
+.section h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+/* CARD */
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* TIMELINE */
+.timeline {
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+}
+
+.timeline-item {
+  margin-bottom: 25px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #9ca3af;
+}
+
+a { color: var(--accent); }
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div><b>Raqibur</b></div>
+  <div>
+    <a href="#">Home</a>
+    <a href="#">Projects</a>
+    <a href="#">Publications</a>
+    <a href="#">News</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="images/Profile_pic.jpg">
+  <div>
+    <h1>Md Raqibur Rahman</h1>
+    <p>Lecturer • AI • Robotics • Computer Vision</p>
+    <p>
+      Building intelligent systems for real-world perception and robotics.
+    </p>
+    <p>
+      <a href="mailto: raqibur.rahman@northsouth.edu">Email</a> |
+      <a href="https://github.com/AyonRRahman">GitHub</a> |
+      <a href="https://www.linkedin.com/in/md-raqibur-rahman-a52080153/">LinkedIn</a> |
+      <a href="#">Google Scholar</a>
+    </p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="section">
+  <h2>About</h2>
+  <div class="card">
+    I am a Lecturer at North South University working on Artificial Intelligence, Robotics,
+    and Computer Vision. My research focuses on intelligent perception systems,
+    real-time video analytics, and learning-based robotics.
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section">
+  <h2>Experience</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <b>Lecturer — North South University</b><br>
+      2025 – Present
+    </div>
+
+    <div class="timeline-item">
+      <b>Junior Developer — ITQAN Analytics</b><br>
+      2021 – 2022
+    </div>
+
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="section">
+  <h2>Featured Projects</h2>
+  <div class="grid">
+
+    <div class="card">
+      <h3>Visual SLAM for Underwater Robots</h3>
+      <p>Enhanced ORB-SLAM3 for underwater environments.</p>
+    </div>
+
+    <div class="card">
+      <h3>DSAC* Reimplementation</h3>
+      <p>Learning-based camera pose estimation.</p>
+    </div>
+
+    <div class="card">
+      <h3>Video Analytics System</h3>
+      <p>Real-time industrial monitoring using AI.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- PUBLICATIONS -->
+<div class="section">
+  <h2>Selected Publications</h2>
+  <div class="card">
+    CNN-based Deep Learning Approach for Micro-crack Detection of Solar Panels (IEEE, 2021)
+  </div>
+</div>
+
+<!-- NEWS -->
+<div class="section">
+  <h2>News</h2>
+
+  <div class="card">
+    <b>2026</b> — Started Lecturer position at NSU
+  </div>
+
+  <div class="card">
+    <b>2024</b> — Completed MSc at NTNU
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Md Raqibur Rahman
+</footer>
+
+</body>
+</html>

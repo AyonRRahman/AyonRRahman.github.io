@@ -1,255 +1,136 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Md Raqibur Rahman</title>
-   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .container {
-      display: flex;
-      flex-direction: row;
-    }
-    
-    .left-column {
-      flex: 1;
-      background-color: #f2f2f2;
-      padding: 20px;
-    }
-    
-    .right-column {
-      flex: 4;
-      padding: 20px;
-    }
-    
-    h2 {
-      color: #333;
-    }
-    
-    p {
-      color: #666;
-    }
-  </style>
+
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-   
 <body>
-<div class="container">
-    <div class="left-column">
-      <div>
-        <img src="images/Profile_pic.jpg" width="250" />
-        <h1>Md Raqibur Rahman</h1>
-        <h4> Lecturer<br>
-          <a href="https://ece.northsouth.edu/">Department of Electrical and Computer Engineering</a><br>
-          <a href="https://www.northsouth.edu/">North South University</a><br>
-          Dhaka 1229, Bangladesh</h4>
-      </div>
-      
-      <a href="mailto: raqibur.rahman@northsouth.edu">Professional Email</a> <br>
-      <a href="mailto: raqibur.ayon@gmail.com">Personal Email</a> <br>
-      <a href="https://www.linkedin.com/in/md-raqibur-rahman-a52080153/">LinkedIn</a>
-      <a href="https://github.com/AyonRRahman">Github</a>
-      <a href="https://scholar.google.com/citations?user=MWtkEGsAAAAJ&hl=en&authuser=1">Google Scholar</a>
-      
-      <br>
-      <br>
-      <hr>
-            <h3>Interests</h3>
-      <ul>
-        <li>Robotics</li>
-        <li>AI, Deep Learning, Computer Vision</li>
-        <li>Traveling</li>
-        <li>Photography</li>
-        <li>Football, Cricket, Badminton</li>
-      </ul>
+
+<!-- NAVBAR -->
+<nav>
+  <div><b>Raqibur</b></div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="research.html">Research</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="news.html">News</a>  
+    <a href="cv.pdf" target="_blank" class="cv-btn">
+      <!-- <img src="images/icons/cv_icon.svg" alt="CV" class="icon-small"> -->
+      📄 CV
+    </a>
+    <span class="toggle-btn" onclick="toggleMode()">🌙 Dark / ☀️ Light</span>
   </div>
+</nav>
 
-  <div class="right-column">
-    <!-- Professional Xp -->
-    <h2>Professional Experience</h2> 
-    <hr>
-    <a href="https://www.northsouth.edu/"><img align="right" src="images/nsu-logo-small.png" width="70" /> </a>
-    <h4>Lecturer</h4>
-    <p>January, 2025 - Present<br>
-      <a href="https://ece.northsouth.edu/">Department of Electrical and Computer Engineering</a><br>
-      <a href="https://www.northsouth.edu/">North South University</a><br>
-      Dhaka, Bangladesh.</p>
-
-    <h4>Junior Developer (python)</h4>
-    <p>September, 2021 - January, 2022<br>
-      ITQAN Analytics & Software Limited<br>
-      Dhaka, Bangladesh.</p>
-
-    <!-- Education -->
-    <h2>Education</h2>
-    <hr>
-    <a href="https://www.master-mir.eu/"><img align="right" src="images/MIR.png" height="60" /> </a>
-    <h4> Master in Marine and Maritime Intelligent Robotics</h4>
-
-    <!-- <a href="https://www.ntnu.edu/"><img align="right" src="images/NTNU.png" height="40"></a>     -->
-    <p> 
-      August 2023 - September 2024 <br> 
-      Department of Marine Technology <br>
-      <a href="https://www.ntnu.edu/">Norwegian University of Science and Technology - NTNU </a>
-    </p>
-
-    <!-- <a href="https://www.univ-tln.fr/"><img align="right" src="images/univ-tln.png" height="40"> </a><br> -->
-    <p> 
-      September 2022 - July 2023 <br> 
-      <a href="https://www.univ-tln.fr/">University of Toulon </a><br>
-      <!-- Grade: 16.513/20 -->
-    </p>
-
-    <h4> Bachelor of Science in Electrical and Electronic Engineering</h4> 
-    <a href="https://www.iutoic-dhaka.edu/"><img align="right" src="images/iut.png" width="60" /> </a>
-    <p>
-      January 2018 – May 2022 <br>
-      Department of Electrical and Electronic Engineering (EEE) <br> 
-      <a href="https://www.iutoic-dhaka.edu/">Islamic University of Technology (IUT)</a> <br>
-      <!-- CGPA: 3.96 / 4.00 &emsp; # Rank: 2 / 180 &emsp; # Top 2% in graduating class -->
-    </p>
-
-    <!-- Research Xp -->
-    <h2>Research Experience</h2>
-    <hr>
-    <h4>Published Articles</h4>
-    <p style="text-align: justify";>
-      <ul>
-        <li><b>Rahman, M.R.</b>, Haque, E., Rahman, S.T., Habibul Kabir, K. and Ahmed, Y.A., 2023.
-          Modelling of an Efficient System for Predicting Ships’ Estimated Time of Arrival Using
-          Artificial Neural Network. In Computational Intelligence: Select Proceedings of InCITe
-          2022 (pp. 199-206). Singapore: Springer Nature Singapore.</li>
-        
-          <li><b>Rahman, M.R.</b>, Tabassum, S., Haque, E., Nishat, M.M., Faisal, F. and Hossain, E., 2021,
-          December. CNN-based Deep Learning Approach for Micro-crack Detection of Solar Panels.
-          In 2021 3rd International Conference on Sustainable Technologies for Industry 4.0 (STI)
-          (pp. 1-6). IEEE.</li>
-
-          <li>Taz, N.H., Islam, A., Mahmud, I., Haque, E. and <b>Rahman, M.R.</b>, 2021, August. A
-            Comprehensive Exploration on Impact of Preprocessing for Prediction of Chronic Kidney
-            Disease Using Multiple Machine Learning Approaches. In 2021 International Conference
-            on Science & Contemporary Technologies (ICSCT) (pp. 1-6). IEEE.</li>
-      </ul>
-    </p>
-
-    <h4>Master’s Thesis</h4>
-    <p>
-    Title: Self Supervised Scale Consistent Depth and Ego-motion Learning From Monocular Video For Underwater Robots <br>
-    Supervisor: Dr Martin Ludvigsen <br>
-    Co-Advisor: Dr Ricard Marxer, Dr Maxime Ferrera
-    </p>
-
-    <h4>Undergraduate Thesis</h4>
-    <p>
-      Title: Modelling of an Efficient System for Predicting Ships’ Estimated Time of Arrival <br>
-      Supervisor: Dr Khondokar Habibul Kabir 
-    </p>
+<!-- HERO -->
+<div id="home" class="hero fade">
+  <img src="images/Profile_pic.jpg" alt="Profile Picture">
+  <div class="hero-text">
+    <h1>Md Raqibur Rahman</h1>
+    <div class="tagline">Lecturer • AI • Robotics • Computer Vision</div>
+    <div class="focus">
+      I work on building intelligent perception systems that operate in real-world environments.
+      My research focuses on combining deep learning with robotics for robust scene understanding,
+      localization, and decision-making in challenging conditions.
+    </div>
     
-    <!-- Projects -->
-    <h2>Projects</h2> 
-    <hr>
-    <p style="text-align: justify;">
-      <ul>
-        <li><b>Visual SLAM for underwater robots:</b> In this project, an underwater dataset (VAROS) was
-          used to perform visual and visual-inertial SLAM. ORB-SLAM3 algorithm was used with
-          different image processing techniques to enhance the underwater images. 
-          [<a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:f6e04ee6-2dc0-403f-b094-8cfccc1e1d23">report</a>]</li>
-        <li style="text-align: justify;" ><b><a href="https://github.com/AyonRRahman/Dsacstar-with-homographyloss">Dsac* with homography loss:</b></a> 
-          This project was a part of the data driven machine perception course. It is about reiplementation of <a href="https://github.com/vislearn/dsacstar">DSAC*</a>. 
-          It is a learning-based visual re-localization method to get the 
-          camera 6-D pose (the camera rotation and translation) from single new image from the specific scene. 
-          This can be done by training DSAC* on the specific scene images. DSAC* is a combination of Scene 
-          Coordinate Regression with CNNs and Differentiable RANSAC (DSAC) for end-to-end training. 
-          We investigated the effect of <a href="https://github.com/clementinboittiaux/homography-loss-function">Homography based loss function</a>
-          in the training process and how the loss function performs in these kind of problems.
-           </li>
-        <li><b><a href="">Dynamic Positioning system for offshore vessel:</a></b> This project was completed as a part of the
-          Marine Control System I course. The system can perform station keeping and set point
-          following with different weather conditions.</li>
-        <li><b>CNN-based model for Micro-crack Detection of Solar Panels:</b> A CNN based model was
-          created to detect micro-cracks in the solar PV panels.</li>
-        
-          
-      </ul>
-    </p>
-    
-    <!-- Voluntary Xp -->
-    <h2>Voluntary Experience</h2>
-    <hr>
-    <p><a href="https://www.shabashfakibaj.com/">SHABASH FAKIBAJ™ LLC, Bangladesh</a>: It is a multinational voluntary educational organization that makes
-      students of Bangladesh aware of information regarding graduate studies abroad. I am working here as a Content Creator. Previously I worked
-      here as Content Representative and Campus Ambassador(IUT) as well.
-      </p>
+    <!-- ICON LINKS -->
+    <div class="icon-links" style="margin-top:20px;">
+      <!-- CV -->
+      <a href="cv.pdf" target="_blank" title="Download CV">
+        <img src="images/icons/cv_icon.svg" alt="CV">
+      </a>
 
-    <!-- Skills -->
+      <!-- GitHub -->
+      <a href="https://github.com/AyonRRahman" target="_blank" title="GitHub">
+        <img src="images/icons/github_icon.svg" alt="GitHub">
+      </a>
 
-    <h2>Technical Skills</h2>
-    <hr>
-    <h4> Programming</h4>
-    <ul>
-      <li>Python(sklearn, pytorch, pandas, numpy)</li> 
-      <li>MATLAB</li>
-      <li>C 
-      <li>HTML
-      <li>ROS </li>
-    </ul>
-    <h4> Design and Simulation Software </h4>
-    <ul>
-      <li>Simulink</li>
-      <li>Proteus</li> 
-      <li>PSpice</li>
-      <li>PSIM</li>
-    </ul>
-    <h4> Hardware </h4>
-    <ul>
-        <li>Raspberry Pi</li>
-        <li>Arduino</li>
-    </ul>
-    <h4>General software</h4> 
-    <ul>
-      <li>Linux</li>
-      <li>Cluster (SLURM based cloud computing)</li>
-      <li>Google Docs</li>
-      <li>MS Office (Word, Power Point, Excel) </li> 
-      <li>LaTeX </li>
-    </ul>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/md-raqibur-rahman-a52080153/" target="_blank" title="LinkedIn">
+        <img src="images/icons/linkedin_icon.svg" alt="LinkedIn">
+      </a>
 
-    <!-- Honours and Awards -->
-    <h2>Honours and Awards</h2>
-    <hr>
-    <h4> Erasmus Mundus Scholarship </h4>
-    <p>Erasmus Mundus Joint Master's degree scholarship, an amount of total 49000 euro, is provided by the European Union
-      towards the tuition fee and living expenses during two years master's studies.</p> 
-    <h4>OIC partial scholarship</h4>
-    <p>13500 USD awarded for performing excellently in the admission test and provided towards covering
-      tuition fee and living expense partially during my study at the Islamic University of
-      Technology.</p>
-    
+      <!-- Professional Email -->
+      <a href="mailto:raqibur.rahman@northsouth.edu" title="Professional Email">
+        <img src="images/icons/email_icon.svg" alt="Email">
+      </a>
 
-    
+      <!-- Personal Email -->
+      <a href="mailto:raqibur.ayon@gmail.com" title="Personal Email">
+        <img src="images/icons/email_icon.svg" alt="Email">
+      </a>
 
-    
-
-       
-
-
-    <!-- Add more descriptions here -->
+      <!-- Instagram -->
+      <a href="#" onclick="openInstagram()" title="Instagram">
+        <img src="images/icons/instagram_icon.svg" alt="Instagram">
+      </a>
+    </div>
   </div>
-
 </div>
-   
 
+<!-- ABOUT + PERSONAL -->
+<div class="section fade">
+  <h2>About Me</h2>
+  <div class="card">
+    I am a Lecturer at North South University working on Artificial Intelligence,
+    Robotics, and Computer Vision. My work focuses on real-time AI systems,
+    video analytics, and learning-based perception for robotics applications.
+  </div>
+  <div class="grid-2" style="margin-top:20px;">
+    <div class="card">
+      <h3>Education</h3>
+      <p><b>MSc in Marine and Maritime Intelligent Robotics</b><br>
+      Norwegian University of Science and Technology (NTNU), Norway (2023 – 2024) <br>
+      University of Toulon, France (2022 - 2023)
+    </p>
+      <p><b>BSc in Electrical and Electronic Engineering</b><br>
+      Islamic University of Technology (IUT), 2018–2022</p>
+    </div>
+    
+    <div class="card" style="cursor:pointer;" onclick="openInstagram()">
+      <h3>Beyond Research</h3>
+      <p>Outside of research, I enjoy traveling and exploring new cultures. 
+      I am also passionate about photography, capturing moments and environments from my travels.
+      Click to view my QR code and follow @ayon_r_rahman115 on Instagram.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="section fade">
+  <h2>Featured Projects</h2>
+  <div id="projects-preview" class="grid"></div>
+  <p style="margin-top:15px;"><a href="projects.html">View all projects →</a></p>
+</div>
+
+<!-- NEWS -->
+<div class="section fade">
+  <h2>Latest Updates</h2>
+  <div id="news-preview"></div>
+  <p style="margin-top:15px;"><a href="news.html">View all updates →</a></p>
+</div>
+
+<!-- INSTAGRAM QR MODAL -->
+<div id="instagramModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="instagramQR" src="images/instagram_link.jpeg">
+  <div id="caption">Scan to follow @ayon_r_rahman115 on Instagram</div>
+</div>
+
+<!-- FOOTER -->
 <footer>
-   <center> 
-    <!-- <a href="mailto: raqibur.ayon@gmail.com">Personal Email</a> .  -->
-    <a href="https://github.com/AyonRRahman">Github</a> . 
-    <a href="https://www.linkedin.com/in/md-raqibur-rahman-a52080153/">LinkedIn</a>
-    <a href="https://www.hitwebcounter.com" target="_blank">
-      <img src="https://hitwebcounter.com/counter/counter.php?page=18719023&style=0024&nbdigits=5&type=page&initCount=0" title="Counter Widget" Alt="Visit counter For Websites"   border="0" /></a>            
-  </center>
+  © 2026 Md Raqibur Rahman
 </footer>
+
 </body>
 </html>
