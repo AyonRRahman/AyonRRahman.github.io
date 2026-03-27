@@ -23,8 +23,7 @@
     <a href="research.html">Research</a>
     <a href="teaching.html">Teaching</a>
     <a href="news.html">News</a>  
-    <a href="cv.pdf" target="_blank" class="cv-btn">
-      <!-- <img src="images/icons/cv_icon.svg" alt="CV" class="icon-small"> -->
+    <a href="https://docs.google.com/document/d/1fiKZjFvmXjajfK5U6OV47PbPvWTsFLaEqUlekurg4SQ/export?format=pdf" target="_blank" class="cv-btn">
       📄 CV
     </a>
     <span class="toggle-btn" onclick="toggleMode()">🌙 Dark / ☀️ Light</span>
@@ -45,11 +44,6 @@
     
     <!-- ICON LINKS -->
     <div class="icon-links" style="margin-top:20px;">
-      <!-- CV -->
-      <a href="cv.pdf" target="_blank" title="Download CV">
-        <img src="images/icons/cv_icon.svg" alt="CV">
-      </a>
-
       <!-- GitHub -->
       <a href="https://github.com/AyonRRahman" target="_blank" title="GitHub">
         <img src="images/icons/github_icon.svg" alt="GitHub">
@@ -59,20 +53,13 @@
       <a href="https://www.linkedin.com/in/md-raqibur-rahman-a52080153/" target="_blank" title="LinkedIn">
         <img src="images/icons/linkedin_icon.svg" alt="LinkedIn">
       </a>
+      <a href="https://scholar.google.com/citations?user=MWtkEGsAAAAJ&hl=en&authuser=1" target="_blank" title="Google Scholar">
+        <img src="images/icons/scholar_icon.svg" alt="Google Scholar">
+      </a>
 
       <!-- Professional Email -->
       <a href="mailto:raqibur.rahman@northsouth.edu" title="Professional Email">
         <img src="images/icons/email_icon.svg" alt="Email">
-      </a>
-
-      <!-- Personal Email -->
-      <a href="mailto:raqibur.ayon@gmail.com" title="Personal Email">
-        <img src="images/icons/email_icon.svg" alt="Email">
-      </a>
-
-      <!-- Instagram -->
-      <a href="#" onclick="openInstagram()" title="Instagram">
-        <img src="images/icons/instagram_icon.svg" alt="Instagram">
       </a>
     </div>
   </div>
@@ -86,24 +73,41 @@
     Robotics, and Computer Vision. My work focuses on real-time AI systems,
     video analytics, and learning-based perception for robotics applications.
   </div>
-  <div class="grid-2" style="margin-top:20px;">
+
+  <div class="section fade">
+  <h2>About Me</h2>
+  <div class="card">
+    I am a Lecturer at North South University working on Artificial Intelligence,
+    Robotics, and Computer Vision. My work focuses on real-time AI systems,
+    video analytics, and learning-based perception for robotics applications.
+  </div>
+  
+  <!-- SINGLE-COLUMN LAYOUT -->
+  <div style="margin-top:20px; display:flex; flex-direction:column; gap:20px;">
+    
+    <!-- PROFESSIONAL EXPERIENCE CARD -->
+    <div class="card">
+      <h3>Professional Experience</h3>
+      <p><b>Lecturer</b><br>
+      North South University, Dhaka, Bangladesh (January, 2025 – Present)</p>
+      <p><b>Product Research Engineer</b><br>
+      The Data Island, Dhaka, Bangladesh (January, 2026 – Present)</p>
+      
+    </div>
+
+    <!-- EDUCATION CARD -->
     <div class="card">
       <h3>Education</h3>
       <p><b>MSc in Marine and Maritime Intelligent Robotics</b><br>
       Norwegian University of Science and Technology (NTNU), Norway (2023 – 2024) <br>
       University of Toulon, France (2022 - 2023)
-    </p>
+      </p>
       <p><b>BSc in Electrical and Electronic Engineering</b><br>
       Islamic University of Technology (IUT), 2018–2022</p>
     </div>
-    
-    <div class="card" style="cursor:pointer;" onclick="openInstagram()">
-      <h3>Beyond Research</h3>
-      <p>Outside of research, I enjoy traveling and exploring new cultures. 
-      I am also passionate about photography, capturing moments and environments from my travels.
-      Click to view my QR code and follow @ayon_r_rahman115 on Instagram.</p>
-    </div>
+
   </div>
+</div>
 </div>
 
 <!-- PROJECTS -->
@@ -118,13 +122,6 @@
   <h2>Latest Updates</h2>
   <div id="news-preview"></div>
   <p style="margin-top:15px;"><a href="news.html">View all updates →</a></p>
-</div>
-
-<!-- INSTAGRAM QR MODAL -->
-<div id="instagramModal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
-  <img class="modal-content" id="instagramQR" src="images/instagram_link.jpeg">
-  <div id="caption">Scan to follow @ayon_r_rahman115 on Instagram</div>
 </div>
 
 <!-- FOOTER -->

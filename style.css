@@ -358,3 +358,53 @@ body.light a {
 body.light a:hover {
   color: #0077cc; /* hover in light mode */
 }
+
+/* =========================
+   PROJECT BUTTONS
+========================= */
+.project-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.project-actions .btn-primary {
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #58a6ff;
+  border: 1px solid #58a6ff;
+  transition: 0.3s;
+}
+
+.project-actions .btn-primary:hover {
+  background: #58a6ff;
+  color: #fff;
+}
+
+/* GitHub icon button */
+.project-actions .btn-github {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  transition: 0.2s;
+  background: #ffffff; /* default white background */
+  border: none;
+}
+
+.project-actions .btn-github img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Dark mode for GitHub icon */
+body:not(.light) .project-actions .btn-github {
+  background: #ffffff; /* white background in dark mode */
+}
+
+.project-actions .btn-github:hover {
+  transform: scale(1.2);
+}

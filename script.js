@@ -29,12 +29,19 @@ function toggleMode() {
     icon.style.filter = document.body.classList.contains("light")
       ? "brightness(1.2)"
       : "brightness(0.9)";
+    icon.style.background = document.body.classList.contains("light") ? "transparent" : "#ffffff";
   });
 
-  // LINK COLORS
+  // LINKS
   const links = document.querySelectorAll("a");
   links.forEach(link => {
     link.style.color = document.body.classList.contains("light") ? "#0969da" : "#58a6ff";
+  });
+
+  // PROJECT GITHUB BUTTONS
+  const githubBtns = document.querySelectorAll(".project-actions .btn-github");
+  githubBtns.forEach(btn => {
+    btn.style.background = document.body.classList.contains("light") ? "#f0f0f0" : "#ffffff";
   });
 }
 
@@ -53,8 +60,20 @@ async function loadProjects(containerId, limit = null) {
 
     projList.forEach(p => {
       const div = document.createElement("div");
-      // remove fade from project-container cards, but keep for preview
       div.className = containerId === "projects-preview" ? "card fade" : "project-card";
+
+      let actionsHTML = "";
+      if (p.github) {
+        actionsHTML += `<a href="${p.github}" target="_blank" class="btn-github">
+          <img src="images/icons/github_icon.svg" alt="GitHub">
+        </a>`;
+      }
+      if (p.page) {
+        actionsHTML += `<a href="${p.page}" target="_blank" class="btn-primary">View Project →</a>`;
+      }
+      if (p.report) {
+        actionsHTML += `<a href="${p.report}" target="_blank" class="btn-primary">Report →</a>`;
+      }
 
       div.innerHTML = `
         ${containerId === "projects-container" && p.image ? `
@@ -67,16 +86,20 @@ async function loadProjects(containerId, limit = null) {
           <p class="project-desc">${p.desc || ""}</p>
           ${p.details ? `<p class="project-details">${p.details}</p>` : ""}
           ${p.tags && p.tags.length ? `<div class="project-tags">${p.tags.map(tag => `<span>${tag}</span>`).join("")}</div>` : ""}
-          ${p.link ? `<div class="project-actions"><a href="${p.link}" target="_blank" class="btn-primary">View Project →</a></div>` : ""}
+          ${actionsHTML ? `<div class="project-actions">${actionsHTML}</div>` : ""}
         </div>
       `;
 
       container.appendChild(div);
 
       // Observe dynamically added fade elements
-      if (div.classList.contains("fade")) {
-        observer.observe(div);
-      }
+      if (div.classList.contains("fade")) observer.observe(div);
+    });
+
+    // Update GitHub button backgrounds after projects load
+    const githubBtns = document.querySelectorAll(".project-actions .btn-github");
+    githubBtns.forEach(btn => {
+      btn.style.background = document.body.classList.contains("light") ? "#f0f0f0" : "#ffffff";
     });
 
   } catch (err) {
@@ -105,6 +128,25 @@ async function loadNews() {
   } catch (err) {
     console.error("ERROR loading news:", err);
   }
+}
+
+// =========================
+// INSTAGRAM QR MODAL
+// =========================
+function openInstagram() {
+  const modal = document.getElementById("instagramModal");
+  modal.style.display = "block";
+}
+
+function closeModal() {
+  const modal = document.getElementById("instagramModal");
+  modal.style.display = "none";
+}
+
+// Close modal when clicking outside the image
+window.onclick = function(event) {
+  const modal = document.getElementById("instagramModal");
+  if (event.target === modal) modal.style.display = "none";
 }
 
 // =========================

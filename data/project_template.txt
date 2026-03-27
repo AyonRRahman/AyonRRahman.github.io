@@ -1,0 +1,10 @@
+  {
+     "title": "Smart Drone Navigation",
+     "desc": "A drone navigation system using RL and computer vision.",
+     "details": "Implemented in Python and ROS.",
+     "tags": ["AI", "Robotics", "RL"],
+     "image": "images/projects/drone.jpg",
+     "github": "https://github.com/AyonRRahman/drone-nav",
+     "page": "projects/drone.html",
+     "report": "docs/drone_report.pdf"
+   }

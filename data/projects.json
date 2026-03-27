@@ -4,14 +4,14 @@
     "desc": "Visual and visual-inertial SLAM using ORB-SLAM3.",
     "details": "Used VAROS dataset with image enhancement techniques.",
     "tags": ["Robotics", "SLAM", "Computer Vision"],
-    "link": "https://acrobat.adobe.com/id/urn:aaid:sc:AP:f6e04ee6-2dc0-403f-b094-8cfccc1e1d23"
+    "report": "https://acrobat.adobe.com/id/urn:aaid:sc:AP:f6e04ee6-2dc0-403f-b094-8cfccc1e1d23"
   },
   {
     "title": "DSAC* with Homography Loss",
     "desc": "Learning-based camera pose estimation.",
     "details": "Reimplementation and loss function analysis.",
     "tags": ["Deep Learning", "Pose Estimation"],
-    "link": "https://github.com/AyonRRahman/Dsacstar-with-homographyloss"
+    "github": "https://github.com/AyonRRahman/Dsacstar-with-homographyloss"
   },
   {
     "title": "Dynamic Positioning System",
@@ -23,4 +23,8 @@
     "desc": "CNN-based defect detection.",
     "details": "Deep learning model to detect micro-cracks in photovoltaic panels."
   }
+
+
+
+
 ]
