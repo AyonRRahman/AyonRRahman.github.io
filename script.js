@@ -153,6 +153,10 @@ window.onclick = function(event) {
 // INITIALIZE
 // =========================
 window.addEventListener("DOMContentLoaded", () => {
+  // Force light mode by default
+  document.body.classList.add("light");
+
+  // Load content
   loadProjects("projects-preview", 3);
   loadProjects("projects-container");
   loadNews();
