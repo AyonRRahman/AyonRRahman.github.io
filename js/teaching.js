@@ -14,7 +14,7 @@ async function loadCourses() {
       div.className = "card fade";
 
       div.innerHTML = `
-        <h3>${c.title}</h3>
+        <h4>${c.title}</h4>
         <p>${c.desc}</p>
         <p>
           <a href="${c.nsuLink}" target="_blank" class="btn-primary">NSU Course Page</a>

@@ -2,29 +2,39 @@
   {
     "title": "Visual SLAM for Underwater Robots",
     "desc": "Visual and visual-inertial SLAM using ORB-SLAM3.",
-    "details": "Used VAROS dataset with image enhancement techniques.",
+    "details": "Used VAROS dataset to evaluate the performance of ORB-SLAM3 in underwater domain. The ORB extraction parameters have been optimized for underwater images as well as the effect of several image enhancement techniques on ORBSLAM3 has been evaluated",
     "tags": ["Robotics", "SLAM", "Computer Vision"],
     "report": "https://acrobat.adobe.com/id/urn:aaid:sc:AP:f6e04ee6-2dc0-403f-b094-8cfccc1e1d23"
   },
   {
     "title": "DSAC* with Homography Loss",
     "desc": "Learning-based camera pose estimation.",
-    "details": "Reimplementation and loss function analysis.",
+    "details": "Reimplementation of DSAC* for visual re-localization, aiming to determine camera pose from single images of a scene. Explored the effectiveness of a Homography-based loss function in training DSAC* for this task.",
     "tags": ["Deep Learning", "Pose Estimation"],
     "github": "https://github.com/AyonRRahman/Dsacstar-with-homographyloss"
   },
   {
     "title": "Dynamic Positioning System",
     "desc": "Offshore vessel control system.",
-    "details": "Designed for station keeping and trajectory following under environmental disturbances."
+    "details": "Designed PID control system along with Extended Kalman Filter based observer for station keeping and setpoint following under environmental disturbances.",
+    "report": "https://acrobat.adobe.com/id/urn:aaid:sc:AP:452b004a-5273-481b-abb2-3c5206988025",
+    "github": "https://github.com/AyonRRahman/DP_system_Project",
+    "tags": ["PID", "EKF", "MATLAB", "SIMULINK"]
+
   },
   {
     "title": "Solar Panel Micro-crack Detection",
-    "desc": "CNN-based defect detection.",
-    "details": "Deep learning model to detect micro-cracks in photovoltaic panels."
+    "desc": "CNN-based solar panel defect detection.",
+    "tags": ["Deep Learning", "Computer Vision", "Transfer Learning"],
+    "details": "Transfer Learning and Ensemble technique used to train multiple CNN models for detecting micro cracks in solar PV panels from Electro-luminescence images."
+  },
+
+  {
+    "title": "Real-time cabbage detection, counting and accurate mapping into geo location from drone video footage for precision agriculture.",
+    "desc": "Detecting Cabbage from drone footage and track and map them in world map for precision farming.",
+    "tags": ["Precision Farming", "Computer Vision", "YOLO"],
+    "details": "From readily available DJI drone footage, the model detects and counts cabbage present in a field. It also maps the cabbages into world map coordinates.",
+    "github": "https://github.com/AyonRRahman/Cabbage"
   }
-
-
-
 
 ]
