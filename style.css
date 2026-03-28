@@ -408,3 +408,57 @@ body:not(.light) .project-actions .btn-github {
 .project-actions .btn-github:hover {
   transform: scale(1.2);
 }
+
+/* =========================
+   NEWS TIMELINE
+========================= */
+
+#news-container {
+  position: relative;
+  padding-left: 30px;
+}
+
+/* vertical line */
+#news-container::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(88,166,255,0.3);
+}
+
+/* each item */
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+/* dot */
+.timeline-dot {
+  position: absolute;
+  left: -2px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background: #58a6ff;
+  border-radius: 50%;
+}
+
+/* content box */
+.timeline-content {
+  margin-left: 25px;
+  background: rgba(20, 30, 60, 0.9);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* light mode */
+body.light .timeline-content {
+  background: #ffffff;
+}
+
+.timeline-content h3 {
+  margin-bottom: 5px;
+}

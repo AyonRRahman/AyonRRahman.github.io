@@ -1,33 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>News</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>News and Updates - Md Raqibur Rahman</title>
+
 <link rel="stylesheet" href="style.css">
+<script defer src="/script.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="light">
 
+<!-- NAVBAR -->
 <nav>
-  <a href="index.html">Home</a>
+  <div><b>Raqibur</b></div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="research.html">Research</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="news.html">News</a>  
+    <a href="https://docs.google.com/document/d/1fiKZjFvmXjajfK5U6OV47PbPvWTsFLaEqUlekurg4SQ/export?format=pdf" target="_blank" class="cv-btn">
+      📄 CV
+    </a>
+    <span class="toggle-btn" onclick="toggleMode()">🌙 Dark / ☀️ Light</span>
+  </div>
 </nav>
 
-<div class="section">
+<!-- NEWS SECTION -->
+<div class="section fade">
+  <h2>News & Updates</h2>
 
-<h1>News</h1>
-
-    <div class="card">
-        <b>January, 2025</b> — Started Lecturer at NSU
-    </div>
-
-    <div class="card">
-        <b>July, 2024</b> — Completed MSc at NTNU
-    </div>
-
-    <div class="card">
-        <b>April, 2022</b> — Completed BSc at IUT
-    </div>
+  <!-- Dynamic container -->
+  <div id="news-container" class="grid-vertical"></div>
 
 </div>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Md Raqibur Rahman
+</footer>
 
 </body>
 </html>

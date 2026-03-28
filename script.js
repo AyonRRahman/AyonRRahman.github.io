@@ -1,3 +1,4 @@
+alert("JS LOADED");
 // =========================
 // FADE-IN ANIMATION
 // =========================
@@ -111,19 +112,52 @@ async function loadProjects(containerId, limit = null) {
 // LOAD NEWS
 // =========================
 async function loadNews() {
-  const container = document.getElementById("news-preview");
-  if (!container) return;
+  const preview = document.getElementById("news-preview");
+  const full = document.getElementById("news-container");
+
+  console.log("FULL:", full);
+
+  if (!preview && !full) return;
 
   try {
     const res = await fetch("./data/news.json");
     const news = await res.json();
 
-    news.slice(0, 3).forEach(n => {
-      const div = document.createElement("div");
-      div.className = "card";
-      div.innerHTML = `<b>${n.year}</b> — ${n.text}`;
-      container.appendChild(div);
-    });
+    console.log("NEWS:", news); // ✅ NOW it's valid
+
+    news.sort((a, b) => b.year - a.year);
+
+    if (preview) {
+      news.slice(0, 3).forEach(n => {
+        const div = document.createElement("div");
+        div.className = "card fade";
+
+        div.innerHTML = `<b>${n.year}</b> — ${n.text}`;
+
+        preview.appendChild(div);
+        observer.observe(div);
+      });
+    }
+
+    if (full) {
+      news.forEach(n => {
+        const div = document.createElement("div");
+        div.className = "timeline-item fade show";
+
+        div.innerHTML = `
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>${n.year}</h3>
+            <p>
+              ${n.text}
+              ${n.link ? `<br><a href="${n.link}" target="_blank">Read more →</a>` : ""}
+            </p>
+          </div>
+        `;
+
+        full.appendChild(div);
+      });
+    }
 
   } catch (err) {
     console.error("ERROR loading news:", err);
