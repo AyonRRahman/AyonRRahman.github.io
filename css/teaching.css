@@ -1,0 +1,29 @@
+/* Teaching Page - simple design like Research page */
+/* 
+.courses-list .card,
+.materials-list .card {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+}
+
+.teaching-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.3rem;
+} */
+
+.courses-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.courses-vertical .card {
+  width: 100%;
+  max-width: 100%; /* ensures full page width */
+  padding: 20px;
+  box-sizing: border-box;
+}

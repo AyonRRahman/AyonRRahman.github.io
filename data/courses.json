@@ -1,0 +1,28 @@
+[
+  {
+    "title": "EEE 141 Electrical Circuits I",
+    "desc": "Undergraduate level foundation course on DC circuit analysis.",
+    "nsuLink": "https://ece.northsouth.edu/courses/eee-141/",
+    "localLink": null
+  },
+
+  {
+    "title": "EEE 241 Electrical Circuits II",
+    "desc": "Undergraduate level foundation course on AC circuit analysis.",
+    "nsuLink": "https://ece.northsouth.edu/courses/eee-241/",
+    "localLink": null
+  },
+  
+  {
+    "title": "CSE 331 Microprocessor Interfacing & Embedded System",
+    "desc": "Assembly language in ARM and microprocessor based embedded systems design.",
+    "nsuLink": "https://ece.northsouth.edu/courses/cse-331/"
+  },
+
+  {
+    "title": "EEE 299 Junior Design Project I",
+    "desc": " Intermediate level design course where students propose, design and build a guided project.",
+    "nsuLink": "https://ece.northsouth.edu/courses/eee-299/"
+  }
+  
+]
