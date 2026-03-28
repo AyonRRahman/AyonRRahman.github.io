@@ -34,12 +34,6 @@ function toggleMode() {
     icon.style.background = document.body.classList.contains("light") ? "transparent" : "#ffffff";
   });
 
-  // LINKS
-  const links = document.querySelectorAll("a");
-  links.forEach(link => {
-    link.style.color = document.body.classList.contains("light") ? "#0969da" : "#58a6ff";
-  });
-
   // PROJECT GITHUB BUTTONS
   const githubBtns = document.querySelectorAll(".project-actions .btn-github");
   githubBtns.forEach(btn => {
@@ -174,7 +168,6 @@ window.onclick = function(event) {
   if (event.target === modal) modal.style.display = "none";
 }
 
-
 // =========================
 // LOAD RESEARCH CURRENT WORK
 // =========================
@@ -248,4 +241,3 @@ window.addEventListener("DOMContentLoaded", () => {
   loadResearch();
   loadPublications();
 });
-
