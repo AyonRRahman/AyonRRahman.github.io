@@ -1,4 +1,5 @@
-alert("JS LOADED");
+console.log("JS LOADED - Academic Timeline with Month Sorting");
+
 // =========================
 // FADE-IN ANIMATION
 // =========================
@@ -56,7 +57,6 @@ async function loadProjects(containerId, limit = null) {
   try {
     const res = await fetch("./data/projects.json");
     const projects = await res.json();
-
     const projList = limit ? projects.slice(0, limit) : projects;
 
     projList.forEach(p => {
@@ -64,24 +64,12 @@ async function loadProjects(containerId, limit = null) {
       div.className = containerId === "projects-preview" ? "card fade" : "project-card";
 
       let actionsHTML = "";
-      if (p.github) {
-        actionsHTML += `<a href="${p.github}" target="_blank" class="btn-github">
-          <img src="images/icons/github_icon.svg" alt="GitHub">
-        </a>`;
-      }
-      if (p.page) {
-        actionsHTML += `<a href="${p.page}" target="_blank" class="btn-primary">View Project →</a>`;
-      }
-      if (p.report) {
-        actionsHTML += `<a href="${p.report}" target="_blank" class="btn-primary">Report →</a>`;
-      }
+      if (p.github) actionsHTML += `<a href="${p.github}" target="_blank" class="btn-github"><img src="images/icons/github_icon.svg" alt="GitHub"></a>`;
+      if (p.page) actionsHTML += `<a href="${p.page}" target="_blank" class="btn-primary">View Project →</a>`;
+      if (p.report) actionsHTML += `<a href="${p.report}" target="_blank" class="btn-primary">Report →</a>`;
 
       div.innerHTML = `
-        ${containerId === "projects-container" && p.image ? `
-          <div class="project-image">
-            <img src="${p.image}" alt="${p.title}">
-          </div>
-        ` : ""}
+        ${containerId === "projects-container" && p.image ? `<div class="project-image"><img src="${p.image}" alt="${p.title}"></div>` : ""}
         <div class="project-content">
           <h3>${p.title || ""}</h3>
           <p class="project-desc">${p.desc || ""}</p>
@@ -92,15 +80,7 @@ async function loadProjects(containerId, limit = null) {
       `;
 
       container.appendChild(div);
-
-      // Observe dynamically added fade elements
       if (div.classList.contains("fade")) observer.observe(div);
-    });
-
-    // Update GitHub button backgrounds after projects load
-    const githubBtns = document.querySelectorAll(".project-actions .btn-github");
-    githubBtns.forEach(btn => {
-      btn.style.background = document.body.classList.contains("light") ? "#f0f0f0" : "#ffffff";
     });
 
   } catch (err) {
@@ -109,53 +89,69 @@ async function loadProjects(containerId, limit = null) {
 }
 
 // =========================
-// LOAD NEWS
+// LOAD NEWS (Academic Timeline with Month Sorting)
 // =========================
 async function loadNews() {
   const preview = document.getElementById("news-preview");
   const full = document.getElementById("news-container");
-
-  console.log("FULL:", full);
-
   if (!preview && !full) return;
 
   try {
     const res = await fetch("./data/news.json");
     const news = await res.json();
 
-    console.log("NEWS:", news); // ✅ NOW it's valid
+    // Parse month+year into Date objects
+    news.forEach(n => {
+      n.dateObj = new Date(n.year); // JS can parse "Month, YYYY" automatically
+    });
 
-    news.sort((a, b) => b.year - a.year);
+    // Sort descending by date
+    news.sort((a,b)=> b.dateObj - a.dateObj);
 
-    if (preview) {
-      news.slice(0, 3).forEach(n => {
-        const div = document.createElement("div");
-        div.className = "card fade";
+    // Group by year
+    const newsByYear = {};
+    news.forEach(n => {
+      const year = n.dateObj.getFullYear();
+      if (!newsByYear[year]) newsByYear[year] = [];
+      newsByYear[year].push(n);
+    });
 
-        div.innerHTML = `<b>${n.year}</b> — ${n.text}`;
+    const sortedYears = Object.keys(newsByYear).sort((a,b)=> b-a);
 
-        preview.appendChild(div);
-        observer.observe(div);
+    if (full) {
+      sortedYears.forEach((year, idxYear) => {
+        // Year header
+        const yearDiv = document.createElement("div");
+        yearDiv.className = "timeline-year";
+        yearDiv.textContent = year;
+        full.appendChild(yearDiv);
+
+        // Items within year (sorted by month descending)
+        newsByYear[year].sort((a,b)=> b.dateObj - a.dateObj).forEach((n, idx) => {
+          const div = document.createElement("div");
+          div.className = "timeline-item fade show";
+          if (idxYear === 0 && idx === 0) div.classList.add("latest"); // Highlight most recent
+
+          div.innerHTML = `
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-month">${n.dateObj.toLocaleString('default',{month:'short'})}</span>
+              <p>${n.text}${n.link ? `<br><a href="${n.link}" target="_blank">Read more →</a>` : ""}</p>
+            </div>
+          `;
+          full.appendChild(div);
+          observer.observe(div);
+        });
       });
     }
 
-    if (full) {
-      news.forEach(n => {
+    if (preview) {
+      news.slice(0,3).forEach(n => {
         const div = document.createElement("div");
-        div.className = "timeline-item fade show";
-
-        div.innerHTML = `
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>${n.year}</h3>
-            <p>
-              ${n.text}
-              ${n.link ? `<br><a href="${n.link}" target="_blank">Read more →</a>` : ""}
-            </p>
-          </div>
-        `;
-
-        full.appendChild(div);
+        div.className = "card fade";
+        div.innerHTML = `<b>${n.dateObj.toLocaleString('default',{month:'short'})}, ${n.dateObj.getFullYear()}</b> — ${n.text}`;
+        preview.appendChild(div);
+        observer.observe(div);
       });
     }
 
@@ -165,33 +161,91 @@ async function loadNews() {
 }
 
 // =========================
-// INSTAGRAM QR MODAL
+// MODAL
 // =========================
 function openInstagram() {
-  const modal = document.getElementById("instagramModal");
-  modal.style.display = "block";
+  document.getElementById("instagramModal").style.display = "block";
 }
-
 function closeModal() {
-  const modal = document.getElementById("instagramModal");
-  modal.style.display = "none";
+  document.getElementById("instagramModal").style.display = "none";
 }
-
-// Close modal when clicking outside the image
 window.onclick = function(event) {
   const modal = document.getElementById("instagramModal");
   if (event.target === modal) modal.style.display = "none";
+}
+
+
+// =========================
+// LOAD RESEARCH CURRENT WORK
+// =========================
+async function loadResearch() {
+  const container = document.getElementById("current-work");
+  if (!container) return;
+
+  try {
+    const res = await fetch("./data/research.json");
+    const works = await res.json();
+
+    works.forEach(w => {
+      const div = document.createElement("div");
+      div.className = "card fade";
+
+      div.innerHTML = `<b>${w.title}</b><br>${w.desc}`;
+
+      container.appendChild(div);
+      observer.observe(div);
+    });
+  } catch (err) {
+    console.error("ERROR loading research:", err);
+  }
+}
+
+// =========================
+// LOAD PUBLICATIONS
+// =========================
+async function loadPublications() {
+  const container = document.getElementById("publications");
+  if (!container) return;
+
+  try {
+    const res = await fetch("./data/publications.json");
+    const pubs = await res.json();
+
+    // sort by year descending
+    pubs.sort((a, b) => b.year - a.year);
+
+    pubs.forEach((p, idx) => {
+      const div = document.createElement("div");
+      div.className = "card fade";
+
+      // Highlight most recent
+      if (idx === 0) div.classList.add("latest");
+
+      div.innerHTML = `
+        <b>${p.authors}</b> (${p.year})<br>
+        <i>${p.title}</i><br>
+        ${p.venue}<br>
+        ${p.link ? `<a href="${p.link}" target="_blank">[Paper]</a>` : ""}
+      `;
+
+      container.appendChild(div);
+      observer.observe(div);
+    });
+  } catch (err) {
+    console.error("ERROR loading publications:", err);
+  }
 }
 
 // =========================
 // INITIALIZE
 // =========================
 window.addEventListener("DOMContentLoaded", () => {
-  // Force light mode by default
   document.body.classList.add("light");
 
-  // Load content
   loadProjects("projects-preview", 3);
   loadProjects("projects-container");
   loadNews();
+  loadResearch();
+  loadPublications();
 });
+
