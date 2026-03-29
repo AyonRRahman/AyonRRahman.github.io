@@ -461,3 +461,30 @@ body.light footer {
     margin-right: auto;
   }
 }
+
+/* =========================
+   AUTO LINKS (SMART LINKS)
+========================= */
+.auto-link {
+  color: #58a6ff;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(88,166,255,0.6);
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.auto-link:hover {
+  color: #79c0ff;
+  border-bottom: 1px solid #79c0ff;
+}
+
+/* Light mode */
+body.light .auto-link {
+  color: #0066cc;
+  border-bottom: 1px dashed rgba(0,102,204,0.5);
+}
+
+body.light .auto-link:hover {
+  color: #004a99;
+  border-bottom: 1px solid #004a99;
+}

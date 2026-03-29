@@ -1,3 +1,4 @@
+
 console.log("JS LOADED - Academic Timeline with Month Sorting");
 
 // =========================
@@ -17,7 +18,6 @@ faders.forEach(el => observer.observe(el));
 function toggleMode() {
   document.body.classList.toggle("light");
 
-  // HERO background
   const hero = document.querySelector(".hero");
   if (hero) {
     hero.style.background = document.body.classList.contains("light")
@@ -25,7 +25,6 @@ function toggleMode() {
       : "linear-gradient(to bottom, rgba(10, 25, 50,0.95), rgba(20, 30, 60,0.9))";
   }
 
-  // ICON LINKS
   const icons = document.querySelectorAll(".icon-links img");
   icons.forEach(icon => {
     icon.style.filter = document.body.classList.contains("light")
@@ -34,7 +33,6 @@ function toggleMode() {
     icon.style.background = document.body.classList.contains("light") ? "transparent" : "#ffffff";
   });
 
-  // PROJECT GITHUB BUTTONS
   const githubBtns = document.querySelectorAll(".project-actions .btn-github");
   githubBtns.forEach(btn => {
     btn.style.background = document.body.classList.contains("light") ? "#f0f0f0" : "#ffffff";
@@ -83,7 +81,7 @@ async function loadProjects(containerId, limit = null) {
 }
 
 // =========================
-// LOAD NEWS (Academic Timeline with Month Sorting)
+// LOAD NEWS
 // =========================
 async function loadNews() {
   const preview = document.getElementById("news-preview");
@@ -94,15 +92,12 @@ async function loadNews() {
     const res = await fetch("./data/news.json");
     const news = await res.json();
 
-    // Parse month+year into Date objects
     news.forEach(n => {
-      n.dateObj = new Date(n.year); // JS can parse "Month, YYYY" automatically
+      n.dateObj = new Date(n.year);
     });
 
-    // Sort descending by date
     news.sort((a,b)=> b.dateObj - a.dateObj);
 
-    // Group by year
     const newsByYear = {};
     news.forEach(n => {
       const year = n.dateObj.getFullYear();
@@ -114,17 +109,15 @@ async function loadNews() {
 
     if (full) {
       sortedYears.forEach((year, idxYear) => {
-        // Year header
         const yearDiv = document.createElement("div");
         yearDiv.className = "timeline-year";
         yearDiv.textContent = year;
         full.appendChild(yearDiv);
 
-        // Items within year (sorted by month descending)
         newsByYear[year].sort((a,b)=> b.dateObj - a.dateObj).forEach((n, idx) => {
           const div = document.createElement("div");
           div.className = "timeline-item fade show";
-          if (idxYear === 0 && idx === 0) div.classList.add("latest"); // Highlight most recent
+          if (idxYear === 0 && idx === 0) div.classList.add("latest");
 
           div.innerHTML = `
             <div class="timeline-dot"></div>
@@ -169,7 +162,7 @@ window.onclick = function(event) {
 }
 
 // =========================
-// LOAD RESEARCH CURRENT WORK
+// LOAD RESEARCH
 // =========================
 async function loadResearch() {
   const container = document.getElementById("current-work");
@@ -204,14 +197,12 @@ async function loadPublications() {
     const res = await fetch("./data/publications.json");
     const pubs = await res.json();
 
-    // sort by year descending
     pubs.sort((a, b) => b.year - a.year);
 
     pubs.forEach((p, idx) => {
       const div = document.createElement("div");
       div.className = "card fade";
 
-      // Highlight most recent
       if (idx === 0) div.classList.add("latest");
 
       div.innerHTML = `
@@ -230,14 +221,78 @@ async function loadPublications() {
 }
 
 // =========================
+// AUTO LINKING SYSTEM
+// =========================
+let AUTO_LINKS = [];
+
+async function loadAutoLinks() {
+  try {
+    const res = await fetch("./data/auto-links.json");
+    AUTO_LINKS = await res.json();
+
+    AUTO_LINKS.sort((a, b) => b.text.length - a.text.length);
+
+  } catch (err) {
+    console.error("ERROR loading auto-links:", err);
+  }
+}
+
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function applyAutoLinks(root) {
+  if (!AUTO_LINKS.length || !root) return;
+
+  function processNode(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      let text = node.nodeValue;
+      let replaced = false;
+
+      AUTO_LINKS.forEach(link => {
+        const regex = new RegExp(`\\b${escapeRegex(link.text)}\\b`, "gi");
+
+        text = text.replace(regex, match => {
+          replaced = true;
+          return `<a href="${link.url}" class="auto-link" title="${link.desc || link.text}">${match}</a>`;
+        });
+      });
+
+      if (replaced) {
+        const span = document.createElement("span");
+        span.innerHTML = text;
+        node.replaceWith(span);
+      }
+    }
+    else if (
+      node.nodeType === Node.ELEMENT_NODE &&
+      node.tagName !== "A" &&
+      node.tagName !== "SCRIPT" &&
+      node.tagName !== "STYLE"
+    ) {
+      [...node.childNodes].forEach(processNode);
+    }
+  }
+
+  processNode(root);
+}
+
+// =========================
 // INITIALIZE
 // =========================
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
   document.body.classList.add("light");
 
-  loadProjects("projects-preview", 3);
-  loadProjects("projects-container");
-  loadNews();
-  loadResearch();
-  loadPublications();
+  await loadAutoLinks();
+
+  await Promise.all([
+    loadProjects("projects-preview", 3),
+    loadProjects("projects-container"),
+    loadNews(),
+    loadResearch(),
+    loadPublications()
+  ]);
+
+  applyAutoLinks(document.body);
 });
+
