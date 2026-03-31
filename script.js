@@ -57,8 +57,8 @@ async function loadProjects(containerId, limit = null) {
 
       let actionsHTML = "";
       if (p.github) actionsHTML += `<a href="${p.github}" target="_blank" class="btn-github"><img src="images/icons/github_icon.svg" alt="GitHub"></a>`;
-      if (p.page) actionsHTML += `<a href="${p.page}" target="_blank" class="btn-primary">View Project</a>`;
-      if (p.report) actionsHTML += `<a href="${p.report}" target="_blank" class="btn-primary">PDF</a>`;
+      if (p.page) actionsHTML += `<a href="${p.page}" target="_blank" class="btn-primary-pdf">View Project</a>`;
+      if (p.report) actionsHTML += `<a href="${p.report}" target="_blank" class="btn-primary-pdf">PDF</a>`;
 
       div.innerHTML = `
         ${containerId === "projects-container" && p.image ? `<div class="project-image"><img src="${p.image}" alt="${p.title}"></div>` : ""}
