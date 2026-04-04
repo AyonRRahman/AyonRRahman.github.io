@@ -83,60 +83,64 @@ async function loadProjects(containerId, limit = null) {
 // =========================
 // LOAD NEWS
 // =========================
+// =========================
+// LOAD NEWS (Fixed Version)
+// =========================
 async function loadNews() {
   const preview = document.getElementById("news-preview");
   const full = document.getElementById("news-container");
   if (!preview && !full) return;
 
   try {
-    const res = await fetch("./data/news.json");
+    const res = await fetch("/data/news.json");   // Make sure path is correct
     const news = await res.json();
 
+    // === FIXED DATE PARSING ===
     news.forEach(n => {
-      n.dateObj = new Date(n.year);
+      n.dateObj = new Date(n.year);               // Now safe because format is YYYY-MM-DD
+      
+      // Extra safety: check if date is valid
+      if (isNaN(n.dateObj.getTime())) {
+        console.warn("Invalid date for:", n.year);
+        n.dateObj = new Date(0); // fallback
+      }
     });
 
-    news.sort((a,b)=> b.dateObj - a.dateObj);
+    // Sort by date descending (newest first)
+    news.sort((a, b) => b.dateObj - a.dateObj);
 
-    const newsByYear = {};
-    news.forEach(n => {
-      const year = n.dateObj.getFullYear();
-      if (!newsByYear[year]) newsByYear[year] = [];
-      newsByYear[year].push(n);
-    });
-
-    const sortedYears = Object.keys(newsByYear).sort((a,b)=> b-a);
-
+    // For full news page (timeline)
     if (full) {
-      sortedYears.forEach((year, idxYear) => {
-        const yearDiv = document.createElement("div");
-        yearDiv.className = "timeline-year";
-        yearDiv.textContent = year;
-        full.appendChild(yearDiv);
+      news.forEach((n, idx) => {
+        const div = document.createElement("div");
+        div.className = "timeline-item fade show";
+        if (idx === 0) div.classList.add("latest");
 
-        newsByYear[year].sort((a,b)=> b.dateObj - a.dateObj).forEach((n, idx) => {
-          const div = document.createElement("div");
-          div.className = "timeline-item fade show";
-          if (idxYear === 0 && idx === 0) div.classList.add("latest");
+        const month = n.dateObj.toLocaleString('default', { month: 'short' });
+        const year = n.dateObj.getFullYear();
 
-          div.innerHTML = `
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <span class="timeline-month">${n.dateObj.toLocaleString('default',{month:'short'})}</span>
-              <p>${n.text}${n.link ? `<br><a href="${n.link}" target="_blank">Read more →</a>` : ""}</p>
-            </div>
-          `;
-          full.appendChild(div);
-          observer.observe(div);
-        });
+        div.innerHTML = `
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-month">${month} ${year}</span>
+            <p>${n.text}${n.link ? `<br><a href="${n.link}" target="_blank">Read more →</a>` : ""}</p>
+          </div>
+        `;
+        full.appendChild(div);
+        observer.observe(div);
       });
     }
 
+    // For homepage preview
     if (preview) {
-      news.slice(0,3).forEach(n => {
+      news.slice(0, 3).forEach(n => {
         const div = document.createElement("div");
         div.className = "card fade";
-        div.innerHTML = `<b>${n.dateObj.toLocaleString('default',{month:'short'})}, ${n.dateObj.getFullYear()}</b> — ${n.text}`;
+        
+        const month = n.dateObj.toLocaleString('default', { month: 'short' });
+        const year = n.dateObj.getFullYear();
+        
+        div.innerHTML = `<b>${month} ${year}</b> — ${n.text}`;
         preview.appendChild(div);
         observer.observe(div);
       });
